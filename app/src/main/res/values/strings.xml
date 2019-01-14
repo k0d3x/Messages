@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Messages</string>
+    <string name="content_small">This is part of bigger messages to show.</string>
+    <string name="sender">Sender</string>
+    <string name="permission_title"><b>Permission Needed !</b></string>
+    <string name="permission_message"><b>READ SMS permission is needed to use this app functionality.</b></string>
+    <string name="notification_title"><b>Message from: sender</b></string>
+    <string name="otp"><b>Your OTP is :</b></string>
+    <string name="copy"><b>copy</b></string>
+</resources>
