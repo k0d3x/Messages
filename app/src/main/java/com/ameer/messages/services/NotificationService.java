@@ -4,6 +4,8 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
@@ -33,7 +35,10 @@ public class NotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent.getAction().equals("copy.OTP")) {
-            Toast.makeText(this, "copy otp", Toast.LENGTH_SHORT).show();
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("otp", intent.getStringExtra("message"));
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(this, "OTP Copied"+intent.getStringExtra("message"), Toast.LENGTH_SHORT).show();
         } else if (intent.getAction().equals("start.service")) {
             Toast.makeText(this, "Service started", Toast.LENGTH_SHORT).show();
             mIntent = intent;
@@ -53,12 +58,14 @@ public class NotificationService extends Service {
         if(type == 1){
             RemoteViews views = new RemoteViews(getPackageName(),
                     R.layout.otp_notification);
+            views.setTextViewText(R.id.otp_text,message);
             Intent copyIntent = new Intent(this, NotificationService.class);
             copyIntent.setAction("copy.OTP");
+            copyIntent.putExtra("message",message);
             PendingIntent copyPendingIntent = PendingIntent.getService(this, 1,
                     copyIntent, 0);
             views.setOnClickPendingIntent(R.id.copy_otp, copyPendingIntent);
-
+            views.setImageViewResource(R.id.contact,R.drawable.icon_contact);
             NotificationCompat.Builder b = new NotificationCompat.Builder(getApplicationContext(),NotificationHelper.channel1ID);
             b.setContent(views);
             b.setSmallIcon(R.drawable.icon_contact);

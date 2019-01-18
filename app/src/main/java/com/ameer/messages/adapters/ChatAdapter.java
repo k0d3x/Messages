@@ -13,7 +13,7 @@ import com.ameer.messages.R;
 import com.ameer.messages.SMS;
 
 import java.util.List;
-
+//ameer
 public class ChatAdapter extends RecyclerView.Adapter {
 
     private String ID;
