@@ -51,7 +51,7 @@ public class SMSReceiver extends BroadcastReceiver {
                 intent1.putExtra("address",strAddress);
                 intent1.putExtra("message_body",strMessage);
                 context.sendBroadcast(intent1);
-                if(strMessage != null && strMessage.contains(" otp ")){
+                if(strMessage != null && strMessage.contains(" otp ") || strMessage.contains(" OTP ")){
                     Pattern r = Pattern.compile("(\\d+(?=\\sis)|(?<=is\\s)\\d+)");
                     Matcher m = r.matcher(strMessage);
                   //  \d+(?=\sis)|(?<=is\s)\d+
