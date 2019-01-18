@@ -8,7 +8,7 @@ Simple Messaging App for Android devices.
    
 # ScreenShots
 
-All Mesages and Chat Messages(basically all chat with a pericular sender you have in your device).
+All Mesages and Chat Messages(basically all chat with a perticular sender you have in your device).
 
 <p float="left">
   <img src="/Screenshot_messages.png" width="400" />
